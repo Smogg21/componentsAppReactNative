@@ -5,6 +5,7 @@ import {Title} from '../../components/ui/Title';
 import {globalStyles} from '../../../config/theme/theme';
 import {Button} from '../../components/ui/Button';
 import {Alert, View} from 'react-native';
+import {showPrompt} from '../../../config/adapters/prompt.adapters';
 
 export const AlertScreen = () => {
   const createTwoButtonAlert = () => {
@@ -39,6 +40,24 @@ export const AlertScreen = () => {
       },
     );
 
+  const onShowPrompt = () => {
+    showPrompt({
+      title: 'Lorem Ipsum',
+      subTittle: 'otro lorem',
+      buttons: [{text: 'OK', onPress: () => console.log('OK Pressed')}],
+      placeholder: 'Placeholder',
+    });
+
+    // Alert.prompt(
+    //   'Correo electrónico?',
+    //   'lorem ipsum',
+    //   (valor: string) => console.log({valor}),
+    //   'secure-text',
+    //   'Soy el valor por defecto',
+    //   'number-pad',
+    // );
+  };
+
   return (
     <CustomView style={globalStyles.globalMargin}>
       <Title text="Alertas" />
@@ -46,7 +65,7 @@ export const AlertScreen = () => {
       <View style={{height: 10}} />
       <Button text="Alerta - 3 Botones" onPress={createThreeButtonAlert} />
       <View style={{height: 10}} />
-      <Button text="Prompt - Input" onPress={() => {}} />
+      <Button text="Prompt - Input" onPress={onShowPrompt} />
     </CustomView>
   );
 };
