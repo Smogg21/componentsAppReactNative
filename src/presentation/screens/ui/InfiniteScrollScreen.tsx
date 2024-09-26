@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unstable-nested-components */
 /* eslint-disable react-native/no-inline-styles */
 import React, {useState} from 'react';
-import {ActivityIndicator, Image, View} from 'react-native';
+import {ActivityIndicator, View} from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
 import {colors} from '../../../config/theme/theme';
 import {FadeInImage} from '../../components/ui/FadeInImage';
