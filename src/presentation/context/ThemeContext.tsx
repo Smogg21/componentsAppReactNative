@@ -18,7 +18,11 @@ export const ThemeProvider = ({children}: PropsWithChildren) => {
   const colorScheme = useColorScheme();
   const [currentTheme, setCurrentTheme] = useState<ThemeColor>('light');
   useEffect(() => {
-    console.log(colorScheme);
+    if (colorScheme === 'dark') {
+      setCurrentTheme('dark');
+    } else {
+      setCurrentTheme('light');
+    }
   }, [colorScheme]);
 
   const setTheme = (theme: ThemeColor) => {
