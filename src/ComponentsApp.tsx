@@ -1,3 +1,4 @@
+/* eslint-disable react/self-closing-comp */
 import '../gesture-handler';
 import React, {PropsWithChildren} from 'react';
 import {NavigationContainer} from '@react-navigation/native';

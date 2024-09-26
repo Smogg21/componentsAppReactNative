@@ -1,6 +1,6 @@
 import {createStackNavigator} from '@react-navigation/stack';
 import {HomeScreen} from '../screens/home/HomeScreen';
-import React from 'react';
+import React, {useContext} from 'react';
 import {Animation101Screen} from '../screens/animations/Animation101Screen';
 import {Animation102Screen} from '../screens/animations/Animation102Screen';
 import {SwitchScreen} from '../screens/switches/SwitchScreen';
@@ -12,12 +12,21 @@ import {ModalScreen} from '../screens/ui/ModalScreen';
 import {InfiniteScrollScreen} from '../screens/ui/InfiniteScrollScreen';
 import {SlidesScreen} from '../screens/ui/SlidesScreen';
 import {ChangeThemeScreen} from '../screens/theme/ChangeThemeScreen';
+import {ThemeContext} from '../context/ThemeContext';
 
 const Stack = createStackNavigator();
 
 export const Navigator = () => {
+  const {colors} = useContext(ThemeContext);
+
   return (
-    <Stack.Navigator screenOptions={{headerShown: false}}>
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+        cardStyle: {
+          backgroundColor: colors.background,
+        },
+      }}>
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
       <Stack.Screen name="Animation101Screen" component={Animation101Screen} />
       <Stack.Screen name="Animation102Screen" component={Animation102Screen} />

@@ -1,22 +1,32 @@
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import React, {useContext} from 'react';
 import {CustomView} from '../../components/ui/CustomView';
 import {Title} from '../../components/ui/Title';
 import {globalStyles} from '../../../config/theme/theme';
 import {Button} from '../../components/ui/Button';
 import {Alert, View} from 'react-native';
 import {showPrompt} from '../../../config/adapters/prompt.adapters';
+import {ThemeContext} from '../../context/ThemeContext';
 
 export const AlertScreen = () => {
+  const {isDark} = useContext(ThemeContext);
+
   const createTwoButtonAlert = () => {
-    Alert.alert('Alert Title', 'My Alert Msg', [
+    Alert.alert(
+      'Alert Title',
+      'My Alert Msg',
+      [
+        {
+          text: 'Cancel',
+          onPress: () => console.log('Cancel Pressed'),
+          style: 'destructive',
+        },
+        {text: 'OK', onPress: () => console.log('OK Pressed')},
+      ],
       {
-        text: 'Cancel',
-        onPress: () => console.log('Cancel Pressed'),
-        style: 'destructive',
+        userInterfaceStyle: isDark ? 'dark' : 'light',
       },
-      {text: 'OK', onPress: () => console.log('OK Pressed')},
-    ]);
+    );
   };
   const createThreeButtonAlert = () =>
     Alert.alert(
@@ -37,6 +47,7 @@ export const AlertScreen = () => {
       {
         cancelable: true,
         onDismiss: () => console.log('onDismiss'),
+        userInterfaceStyle: isDark ? 'dark' : 'light',
       },
     );
 
